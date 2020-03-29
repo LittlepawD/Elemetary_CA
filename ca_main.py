@@ -8,6 +8,7 @@ def generate_ruleset(rule):
     :param rule: number of CA rule as a decimal
     :return: ruleset - dict of k-v pairs representing CA ruleset
     '''
+
     k = [i for i in itertools.product([0,1], repeat=3)]  # 2^3 keys representing all possible combinations of 0 or 1
     bin_rule = '{0:08b}'.format(rule)   # convert decimal to 8-bit binary as a string
     v = [n for n in bin_rule]    # decompose binary into list
@@ -18,8 +19,9 @@ def generate_ruleset(rule):
 
 def new_gen(old_gen):
     '''
-    Return a list of the same size with new generation based on the old
+    Return a list of the same size with new generation based on the old generation.
     '''
+
     new = []
     for n, bit in enumerate(old_gen):
         old_gen.append(0)   # To resolve boundaries TODO come up with something better
@@ -33,10 +35,11 @@ def new_gen(old_gen):
     return new
 
 if __name__ == '__main__':
-
+    # Size of the window
     width = 500
-    height = 250    # Size of the window
-    rect_size = 5   # Size of the 'pixel'
+    height = 250    
+    # Size of the 'pixel'
+    rect_size = 5
 
     # Create and display black window of a specified size
     window = pg.display.set_mode((width,height))
@@ -80,7 +83,6 @@ if __name__ == '__main__':
                 break
             # TODO break if all cells become 1
             # TODO message if repetition occurs
-            # TODO recognize and output number of interesting case happening
 
             # if exit is pressed - quit
             for event in pg.event.get():
